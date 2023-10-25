@@ -1,5 +1,5 @@
 ## 디자인 패턴
-<img width="383" alt="image" src="src/image/헤드퍼스트.png">
+<img width="383" alt="image" src="../image/헤드퍼스트.png">
 
 ## 참석자
 @범수 김 @상우 김
