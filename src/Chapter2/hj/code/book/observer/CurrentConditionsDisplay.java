@@ -1,7 +1,7 @@
-package Chapter2.hj.code.observer;
+package Chapter2.hj.code.book.observer;
 
-import Chapter2.hj.code.subject.Weather;
-import Chapter2.hj.code.subject.WeatherDate;
+import Chapter2.hj.code.book.subject.Weather;
+import Chapter2.hj.code.book.subject.WeatherDate;
 
 public class CurrentConditionsDisplay implements Observer, DisplayElement {
     private WeatherDate weatherDate;

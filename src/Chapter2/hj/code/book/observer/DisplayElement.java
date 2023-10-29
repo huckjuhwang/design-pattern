@@ -1,4 +1,4 @@
-package Chapter2.hj.code.observer;
+package Chapter2.hj.code.book.observer;
 
 public interface DisplayElement {
 

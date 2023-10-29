@@ -1,4 +1,4 @@
-package Chapter2.hj.code.subject;
+package Chapter2.hj.code.book.subject;
 
 public class Weather {
     public float temperature;  // 온도

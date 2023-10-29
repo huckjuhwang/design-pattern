@@ -1,6 +1,6 @@
-package Chapter2.hj.code.observer;
+package Chapter2.hj.code.book.observer;
 
-import Chapter2.hj.code.subject.Weather;
+import Chapter2.hj.code.book.subject.Weather;
 
 public interface Observer {
 

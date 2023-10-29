@@ -1,6 +1,6 @@
-package Chapter2.hj.code.subject;
+package Chapter2.hj.code.book.subject;
 
-import Chapter2.hj.code.observer.Observer;
+import Chapter2.hj.code.book.observer.Observer;
 
 import java.util.ArrayList;
 import java.util.List;
