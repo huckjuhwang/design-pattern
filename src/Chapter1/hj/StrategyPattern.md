@@ -5,8 +5,8 @@
 ### 1. 전략패턴을 사용해야하는 이유
 오리(Duck)가 있고, 이 오리는 꽉꽉(Quack)또는 소리를 못내는(MuteQuack) 오리일수도 있습니다.
 
-이 구조를 그려보면 
-
+이 구조를 그려보면
+<img width="383" alt="image" src="image/전략패턴.png">
 
 이와같이 구성이 가능되고, 위 구조를 프로그래밍 언어로 표현해 보면 다음과 같습니다.
 
@@ -95,12 +95,12 @@ public class Duck {
 public class main {
     public static void main(String[] args) {
         Duck duck = Duck();
-        duck.setQuickBehavior(new MuteQuack());
+        duck.setQuackBehavior(new MuteQuack());
         duck.cry();  // ...(MuteQuack)
         
         // ... 1개월 후, 소리를 낼수 있을 정도로 크게 되었다.
         
-        duck.setQuickBehavior(new Quack());
+        duck.setQuackBehavior(new Quack());
         duck.cry();  // Quack Quack(꽉꽉!~)
     } 
 }
@@ -125,15 +125,19 @@ public class Squack implements QuackBehavior {
 public class main {
     public static void main(String[] args) {
         Duck duck = Duck();
-        duck.setQuickBehavior(new MuteQuack());
+        duck.setQuackBehavior(new MuteQuack());
         duck.cry();  // ...(MuteQuack)
         
         // ... 1개월 후, 소리를 낼수 있을 정도로 크게 되었다.
         
-        duck.setQuickBehavior(new Quack());
+        duck.setQuackBehavior(new Quack());
         duck.cry();  // Quack Quack(꽉꽉!~)
     } 
 }
 ```
-
 이상으로 전략패턴에 대해서 알아보았습니다.
+
+----
+### Q. 이 구조에서 Duck의 종류가 여러명이 되었을 경우에는 어떤 식으로 구조를 변경해야할까?
+<img width="383" alt="image" src="image/전략패턴.png">
+
