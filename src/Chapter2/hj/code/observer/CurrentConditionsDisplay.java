@@ -19,8 +19,14 @@ public class CurrentConditionsDisplay implements Observer, DisplayElement {
     }
 
     @Override
+    public void deleteObserver() {
+        this.deleteObserver();
+    }
+
+    @Override
     public void notifyForStatusChange(Weather weather) {
         this.weather = weather;
         System.out.println("상태가 변경되었습니다.");
+        display();
     }
 }
