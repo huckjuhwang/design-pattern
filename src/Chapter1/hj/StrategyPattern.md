@@ -143,10 +143,12 @@ public class main {
 ### Q. Duck의 종류가 여러명이 되었을 경우에는 어떤 식으로 구조를 변경해야할까?
 - 현재는 청둥오리, 미운오리새끼, 가오리가 있다.
 - 추후, 동물의 따라 display모습을 보여주려고 한다.
+![image](https://github.com/huckjuhwang/design-pattern/assets/47339929/e7a8436d-4606-41c8-b255-703f8b828ea1)
 
 
 ### Q. 현재 닭의 상태를 출력해주는 구조를 만들려면 어떤식으로 구성해야할까??
 - 현재는 물에 떠있는 상태, 밥을 먹는 상태, 걷는 상태 3가지고, 앞으로 상태는 늘어날 수 있다.
 - 추후 상태에 따라 위협적인 동물이 나타났을때 행동을 정의하려고 한다.
+![image](https://github.com/huckjuhwang/design-pattern/assets/47339929/159782da-3b88-4bc6-8a92-dd70c157d43c)
 
 
