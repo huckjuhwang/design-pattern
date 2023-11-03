@@ -1,6 +1,6 @@
-package Chapter2.hj.code.book.subject;
+package Chapter2.hj.code.book.weatherDate.subject;
 
-import Chapter2.hj.code.book.observer.Observer;
+import Chapter2.hj.code.book.weatherDate.observer.Observer;
 
 public interface Subject {
 

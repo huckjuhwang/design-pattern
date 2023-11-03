@@ -1,4 +1,4 @@
-package Chapter2.hj.code.book.observer;
+package Chapter2.hj.code.book.weatherDate.observer;
 
 public interface DisplayElement {
 
