@@ -14,7 +14,7 @@ public class Milk extends CondimentDecorator {
     }
 
     @Override
-    public Double cost() {
+    public Double cost() throws Exception {
         return beverage.cost() + 0.3;
     }
 }
