@@ -4,25 +4,17 @@ import Chapter3.hj.example.Beverage;
 import Chapter3.hj.example.SizeCostInput;
 
 public class HouseBlend extends Beverage {
+    final double menuCost = 1.1;
+
     public HouseBlend() {
         description = "하우스 블랜드";
-        // 다크로스트 메뉴는 3개의 사이즈를 모두 제공한다.
+        // 하우스 블랜드메뉴는 venti 사이즈를 모두 제공하지 않는다.
         this.size.setCost(new SizeCostInput(0.15, 0.0));
     }
 
-    @Override
-    public String getDescription() {
-        return super.getDescription();
-    }
 
     @Override
-    public Double cost() throws Exception {
-        double menuCost = 1.1;
-
-        if(!this.size.isSatisfied(this)) {
-            throw new Exception(getDescription() + "메뉴의 " + this.size.name() + "사이즈는 제공되지 않습니다.");
-        }
-
+    public Double cost() {
         return menuCost + size.getCost();
     }
 }

@@ -62,13 +62,16 @@ public abstract class Beverage {
         this.size = size;
     }
 
-
     protected String description = "제목 없음";
 
-    public String getDescription() {
+    public String getDescription() throws Exception {
+        if(!this.size.isSatisfied(this)) {
+            throw new Exception(description + "메뉴의 " + this.size.name() + "사이즈는 제공되지 않습니다.");
+        }
+
         return "메인 메뉴: (" + description + ")";
     }
 
 
-    public abstract Double cost() throws Exception;
+    public abstract Double cost();
 }
