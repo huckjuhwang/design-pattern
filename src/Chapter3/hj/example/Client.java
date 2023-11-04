@@ -1,8 +1,8 @@
-package Chapter3.hj;
+package Chapter3.hj.example;
 
-import Chapter3.hj.decorator.Milk;
-import Chapter3.hj.decorator.Mocha;
-import Chapter3.hj.menu.DarkRoast;
+import Chapter3.hj.example.decorator.Milk;
+import Chapter3.hj.example.decorator.Mocha;
+import Chapter3.hj.example.menu.DarkRoast;
 
 public class Client {
     public static void main(String[] args) {

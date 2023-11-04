@@ -1,6 +1,6 @@
-package Chapter3.hj.decorator;
+package Chapter3.hj.starbuzz.decorator;
 
-import Chapter3.hj.Beverage;
+import Chapter3.hj.starbuzz.Beverage;
 
 public class Milk extends CondimentDecorator {
 

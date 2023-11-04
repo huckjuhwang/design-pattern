@@ -1,6 +1,6 @@
-package Chapter3.hj.menu;
+package Chapter3.hj.example.menu;
 
-import Chapter3.hj.Beverage;
+import Chapter3.hj.example.Beverage;
 
 public class DarkRoast extends Beverage {
     public DarkRoast() {

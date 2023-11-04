@@ -1,6 +1,6 @@
-package Chapter3.hj.decorator;
+package Chapter3.hj.example.decorator;
 
-import Chapter3.hj.Beverage;
+import Chapter3.hj.example.Beverage;
 
 public abstract class CondimentDecorator extends Beverage {
     Beverage beverage;

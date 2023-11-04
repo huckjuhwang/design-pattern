@@ -1,6 +1,6 @@
-package Chapter3.hj.menu;
+package Chapter3.hj.starbuzz.menu;
 
-import Chapter3.hj.Beverage;
+import Chapter3.hj.starbuzz.Beverage;
 
 public class HouseBlend extends Beverage {
     @Override
