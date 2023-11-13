@@ -137,17 +137,13 @@ public class Whip extends CondimentDecorator {
 public class coffeeOrderSystem {
 	
 	public static void main(String args[]) {
-		Beverage beverage = new Espresso();
 
-		Beverage beverage2 = new Espresso();
+		Beverage beverage = new Espresso();
 		beverage = new Mocha(beverage); // Mocha로 감싼다
 		beverage = new Mocha(beverage); // Mocha로 감싼다
 		beverage = new Whip(beverage); // Whip으로 감싼다
 
 		System.out.println(beverage.getDescription() + " $" + beverage.cost());
-		// 에스프레소 커피 $1.99
-		System.out.println(beverage2.getDescription() + " $" + beverage2.cost());
-		// 에스프레소 커피, 모카, 모카, 휘핑크림 $2.49
 	}
 }
 ```
