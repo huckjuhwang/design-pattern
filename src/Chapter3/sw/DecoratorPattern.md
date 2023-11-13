@@ -63,7 +63,7 @@ public abstract class Beverage {
 }
 ```
 
-CondimentDecorator 구현
+CondimentDecorator 구현 (장식할 구성요소와 같은 추상클래스를 상속)
 ```java
 // Beverage 객체를 감쌀 수 있도록 
 // Beverage 클래스 변수로 선언
