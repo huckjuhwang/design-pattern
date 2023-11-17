@@ -1,4 +1,8 @@
-package Chapter4.hj.Factory.FactoryMethodPattern;
+package Chapter4.hj.Factory.AbstractFactoryPattern;
+
+import Chapter4.hj.Factory.AbstractFactoryPattern.abstractFactory.ChickenServiceMenuFactory;
+import Chapter4.hj.Factory.AbstractFactoryPattern.abstractFactory.FoodServiceMenuAbstractFactory;
+import Chapter4.hj.Factory.AbstractFactoryPattern.abstractFactory.source.ChickenSourceFactory;
 
 public class ChickenFactory implements FoodFactory {
 
@@ -31,6 +35,12 @@ public class ChickenFactory implements FoodFactory {
     @Override
     public Food createFood() {
         System.out.println("치킨이 만들어 졌습니다.");
+
+        // 추가@@
+        ChickenServiceMenuFactory chickenServiceMenuFactory = new ChickenServiceMenuFactory();
+        chickenServiceMenuFactory.createSource().getSource();
+        chickenServiceMenuFactory.createCommonSide().getSideMenu();
+
         return new Chicken();
     }
 }

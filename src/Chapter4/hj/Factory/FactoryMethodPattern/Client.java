@@ -26,6 +26,7 @@ public class Client {
             food.eat();
         }
 
+        System.out.println("==================");
 
         PizzaFactory pizzaFactory = new PizzaFactory();
         Food food = pizzaFactory.createFood();
