@@ -1,4 +1,4 @@
-package Chapter4.hj.Factory.AbstractFactoryPattern;
+package Chapter4.hj.Factory.AbstractFactoryPattern.exam;
 
 public abstract class Pizza {
 	String name;
