@@ -1,25 +1,309 @@
-# 팩토리 패턴 (Factory Pattern)
+## 팩토리 패턴 (Factory Pattern)
 
-들어가기 전에...
-왜 쓰는가?
-객체를 생성하는 코드만 분리하여 클라이언트 코드와의 결합도를 낮추어, 코드 변경을 최소화하기 위해 쓴다.
-OCP(확장에 열려있고, 수정에 닫혀있어야한다)를 지키기 위해 변경 가능성이 큰 객체 생성을 담당하는 클래스를 분리한다.
+----
+- 객체를 생성하는 코드만 분리하여 클라이언트가, 특정 객체의 생성과정을 몰라도 쉽게 생성할수 있게 해주는 패턴이다.
+- OCP를 지키기 위해 변경 가능성이 큰 객체 생성을 담당하는 클래스를 분리한다.
 
-팩토리 => 공장(class or function)
+### 팩토리 => 공장(class or function)
 - 오브젝트를 찍어 낼수 있는 공장
 
 피자, 치킨
-
+- (그림추가)
 food(상위 클래스) -> chikine, pizza
+![img_1.png](img_1.png)
+
+client는 그냥 공장에 "피자를 만들어줘", "치킨을 만들어줘"만 알려주면 공장에서 해당 음식의 생성과정을 통해서 음식을 전달해준다.
+- 즉, 생성과정을 알 필요가 없다는 이야기랑 같다.
+
+
+### 팩토리 패턴 구현해보기
+- 팩토리 메서드 패턴을 구현해보면 다음과 같다
+```java
+public interface Food {
+    public void eat();
+}
+
+public class Chicken implements Food {
+    @Override
+    public void eat() {
+        System.out.println("치킨 맛있엉!");
+    }
+}
+
+public class Pizza implements Food {
+    @Override
+    public void eat() {
+        System.out.println("피자 맛있엉");
+    }
+}
+```
 
 ```java
-interface food {
-    abstract 
-} 
+// 음식 만드는 공장
+public class Factory {
+    // 현업에서는 enum으로 정의해야함(type-safety)
+    public Food createFood(String foodName) {
+        if(foodName.equals("CHICKEN")) {
+            return new Chicken();
+        } else if(foodName.equals("PIZZA")){
+            return new Pizza();
+        }
+        return null;
+    }
+}
+```
+```java
+public static void main(String[] args) {
+    Factory factory = new Factory();
+    Food chicken = factory.createFood("CHICKEN");
+    chicken.eat();
+
+    Food pizza = factory.createFood("PIZZA");
+    pizza.eat();
+}
+```
+
+이러한 object 생성과정을 클라이언트가 직접 다룰 필요가 없다.
+- 위 예제에서는 간단하기 때문에 공감이 안될수도 있으니 예시를 하나 들어보자!
+
+피자를 만들기 위해서는 총4가지의 과정이 필요했다면??
+```text
+- 준비
+- 굽기
+- 자르기
+- 포장하기
+```
+(4가지 절차가 있는 그림 넣기)
+
+- 클라이언트는 지금과 다른것 없이 피자를 주문할수 있을것 이다.
+
+- 이게 팩토리 패턴의 장점이다.
+- 클라이언트 입장에서는 객체를 생성하기위한 위와 같은 과정을 몰라도 `PIZZA` 키워드만 보냄으로써 해당 객체를 쉽게 생성할수 있도록 해주는것이 핵심이다.
+
+### 팩토리 패턴 한계
+- 요구사항이 추가되면서, 음식에 따라 필요한 메서드들이 생기게 되었다.
+
+  - 피자는 잘라지는 조각 갯수를 제공해야했고, 
+  - 순살로 변경해서 주문하는것이 가능한지 여부를 제공해야했다.
+
+이런 경우에는 추가구현을 하는건 어려움이 있다. 하나의 팩토리에 모든 생성 객체에 대한 코드가 들어가기 때문에 복잡해진다.
+
+- 이러한 문제를 팩토리 메서드 패턴에서 해결할수 있다.
+  - 팩토리 패턴의 생성 메서드를 Interface화 시킨다
+  
+
+각각의 factory를 생성한다. (피자, 치킨)
+- (그림 추가, 피자 치킨에 대한 각각 생성 )
+![img_2.png](img_2.png)
+- 이를 위한 interface를 정의하고, CreateFood라는 객체 메서드를 제공한다.
+- 객체에 따라 따로 팩토리를 만들었음으로, 객체에따라 기능구현이 가능해진다.
+  (`피자를 몇조각으로 짜르는지, 치킨은 순살이 가능한지 여부`)
+
+코드로 한번 살펴보자
+
+### 팩토리 메서드 패턴 구현해보기 
+```java
+
+public interface FoodFactory {
+    public Food createFood();
+}
+
+// 피자 공장
+public class PizzaFactory implements FoodFactory {
+    private Long pizzaCutCount;
+
+    public PizzaFactory() {
+        pizzaCutCount = 8L;
+    }
+
+    public void pizzaCutCount() {
+        System.out.println("피자의 조각 갯수는 => " + pizzaCutCount + "입니다.");
+    }
+
+    @Override
+    public Food createFood() {
+        System.out.println("피자가 만들어 졌습니다.");
+        return new Pizza();
+    }
+}
+
+// 치킨공장
+public class ChickenFactory implements FoodFactory {
+    // 순살여부를 지원하는가
+    private boolean isBoneless;
+
+    public ChickenFactory() {
+        isBoneless = true;
+    }
+
+    public ChickenFactory(boolean isBoneless) {
+        this.isBoneless = isBoneless;
+    }
+
+    public void setIsBoneLess(boolean isBoneless) {
+        this.isBoneless = isBoneless;
+    }
+
+    public Boolean isSatisfiedBoneLess()  {
+        if(isBoneless) {
+            System.out.println("순살을 지원합니다.");
+        } else {
+            System.out.println("순살을 지원하지 않습니다.");
+        }
+
+        return isBoneless;
+    }
+
+
+    @Override
+    public Food createFood() {
+        System.out.println("치킨이 만들어 졌습니다.");
+        return new Chicken();
+    }
+}
+```
+
+```java
+public static void main(String[] args) {
+    ChickenFactory chickenFactory = new ChickenFactory();
+
+    /**
+     * 순살 가능여부 체크
+     */
+    Boolean satisfiedBoneLess = chickenFactory.isSatisfiedBoneLess();
+    if(satisfiedBoneLess) {
+      Food food = chickenFactory.createFood();
+      food.eat();
+    }
+
+    System.out.println("==================");
+
+    PizzaFactory pizzaFactory = new PizzaFactory();
+    Food food = pizzaFactory.createFood();
+    food.eat();
+    pizzaFactory.pizzaCutCount();
+    }
+}
+```
+### 결과
+![img.png](img.png)
+
+팩토리 메서드 패턴의 핵심은, factory interface가 있고, 각 객체마다 해당 interface의 object creater를 하는 메서드를 구현하고 있다는것이 핵심이다.
+
+- 실제 현업에서는 서브클래스의 네이밍을 다르게 쓰는 경우가 있다. ~~Manager, ~~Creator
+   - object creater 하는 메서드가 상속되어있다면, 팩토리 메서드 패턴을 사용했구나 라고 이해하면된다.
+
+- 이 패턴에서는 하나의 오브젝트가 == 하나의 factory와 매칭이 될 필요는 없다.(여러개가 매칭되어도됨 )
+- 오브젝트를 생성하는 메서드가 상속이 되었는가, 즉, 오브젝트를 만들어 내는 클래스가 상속이되어있느냐를 핵심으로 본다면 필요한 시점에 활용하기 좋을것 이다.
+
+
+### 한계
+- 그런데 갑자기 추가 요청이 들어오게되었다.
+
+- 모든 음식에, 사이드메뉴랑 소스도 제공을 해줘야한다는 내용이였다. 
+
+- 이를 구현하려면 각 팩토리에 사이드랑 소스 제공 메서드를 전달해주면될까?
+- X, 이렇게 되었을때, 특정 객체에서 구현하지 않았을경우 문제가 될수 있다. 놓치고, 개발을 하지 않을수 도 있기때문에 이것에 대한 해결방법이 필요하다.
+
+
+- 각각(치킨, 피자의) 추상 인터페이스를 구현하고, 서비스 물품에 해당하는 제품(소스, 사이드메뉴)의 구현도 필요하다.
+* - 이후 각 추상 팩토리에서, 구현체에 맞는 제품을 리턴해주는 방식
+'
+
+```java
+public interface FoodServiceMenuAbstractFactory {
+    /**
+     * 음식에 따른 소스 제공
+     */
+    public Source createSource();
+
+    /**
+     * 음식에 따른 사이드 메뉴 제공한다.
+     */
+    public SideMenu createCommonSide();
+}
+
+public class ChickenServiceMenuFactory implements FoodServiceMenuAbstractFactory {
+    @Override
+    public Source createSource() {
+        return new ChickenSourceFactory();
+    }
+
+    @Override
+    public SideMenu createCommonSide() {
+        return new ChickenSideMenuFactory();
+    }
+}
+
+public class PizzaServiceMenuFactory implements FoodServiceMenuAbstractFactory {
+    @Override
+    public Source createSource() {
+        return new PizzaSourceFactory();
+    }
+
+    @Override
+    public SideMenu createCommonSide() {
+        return new PizzaSideMenuFactory();
+    }
+}
+
+
+
+public class ChickenFactory implements FoodFactory {
+
+    ...
+    
+    @Override
+    public Food createFood() {
+        System.out.println("치킨이 만들어 졌습니다.");
+
+        // 추가@@
+        ChickenServiceMenuFactory chickenServiceMenuFactory = new ChickenServiceMenuFactory();
+        chickenServiceMenuFactory.createSource().getSource();
+        chickenServiceMenuFactory.createCommonSide().getSideMenu();
+
+        return new Chicken();
+    }
+}
+
+public class PizzaFactory implements FoodFactory {
+    ...
+    
+    @Override
+    public Food createFood() {
+        System.out.println("피자가 만들어 졌습니다.");
+
+        // 추가@@
+        FoodServiceMenuAbstractFactory pizzaServiceMenuFactory = new PizzaServiceMenuFactory();
+        pizzaServiceMenuFactory.createSource().getSource();
+        pizzaServiceMenuFactory.createCommonSide().getSideMenu();
+
+        return new Pizza();
+    }
+}
 
 ```
 
+- 각 팩토리에서 정의해줘도 되지 않은가?
+   - 이전과 같은 이유때문에 힘들다. 이것또한 소스와 사이드를 필수로 제공해줘야하는데, 각 객체에 따라 구현해주지 않는 경우가 있을수 있다.
 
+
+* - 아무래도 구현체에 의존을 하게될수 있을것 같음.
+
+
+* factory method pattern :
+* - 객체 생성에 대한 책임을 서브클래스로 넘겨서, 서브클래스에서 형태가 정해지는 패턴
+* - 객체기준으로 보는거고, 자신이 사용할 추상 클래스만 알면된다.
+* - 클라이언트와 구상형식을 분리하는 역할
+*
+* abstract factory method pattern:
+* - 선택된 클래스에 맞는 데이터를 가지고 오는 패턴
+* - 클래스 기준으로 보는거고,
+* - 제품군을 만드는 추상형식을 제공한다.
+* - 즉, 제품에 따른 다른 데이터를 가지고 와야할때 사용한다.
+* - 치킨에 대한 서비스 물품들과, 피자에 대한 서비스 물품을 받아오고 싶을때 사용한다.
+- 
+### 
 
 ## 1. Simple Factory
 ### 기존 코드의 문제

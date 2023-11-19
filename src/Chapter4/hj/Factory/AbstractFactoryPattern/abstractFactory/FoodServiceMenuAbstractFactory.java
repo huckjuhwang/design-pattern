@@ -14,6 +14,4 @@ public interface FoodServiceMenuAbstractFactory {
      * 음식에 따른 사이드 메뉴 제공한다.
      */
     public SideMenu createCommonSide();
-
-
 }
