@@ -6,10 +6,10 @@ import Chapter3.hj.starbuzz.menu.DarkRoast;
 
 public class Client {
     public static void main(String[] args) {
-        Beverage mainMenu = new DarkRoast();
+        Beverage mainMenu = DarkRoast.getInstance();
         System.out.println(mainMenu.getDescription() + ", $" + mainMenu.cost());
 
-        Beverage mainMenu2 = new DarkRoast(); // 1.5
+        Beverage mainMenu2 = DarkRoast.getInstance();; // 1.5
         mainMenu2 = new Milk(mainMenu2);  // 0.3
         mainMenu2 = new Mocha(mainMenu2); // 0.5
         mainMenu2 = new Mocha(mainMenu2); // 0.5
