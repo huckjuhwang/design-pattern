@@ -60,7 +60,7 @@ public abstract class Beverage {
 }
 ```
 
-CondimentDecorator 구현
+CondimentDecorator 구현 (장식할 구성요소와 같은 추상클래스를 상속)
 ```java
 // Beverage 객체를 감쌀 수 있도록 
 // Beverage 클래스 변수로 선언
@@ -134,9 +134,11 @@ public class Whip extends CondimentDecorator {
 public class coffeeOrderSystem {
 	
 	public static void main(String args[]) {
+
 		Beverage beverage = new Espresso();
 
 		Beverage beverage2 = new Espresso();
+
 		beverage = new Mocha(beverage); // Mocha로 감싼다
 		beverage = new Mocha(beverage); // Mocha로 감싼다
 		beverage = new Whip(beverage); // Whip으로 감싼다
@@ -153,7 +155,9 @@ public class coffeeOrderSystem {
 
 ### Q1.
 Beverage 클래스 장식하기 참고 (126페이지)
-만약 고객이 개인 텀블러를 가져왔을때 1달러 할인하는 기능도 개발하려고 한다.
-구조를 어떤 식으로 구성할 수 있을까?
+
+만약 고객이 개인 텀블러나 머그컵을 가져왔을때 가격을 할인하고 안가져왔을때 가격을 추가하는 기능도 개발하려고 한다. 구조를 어떤 식으로 구성할 수 있을까?
+
+
 
 
