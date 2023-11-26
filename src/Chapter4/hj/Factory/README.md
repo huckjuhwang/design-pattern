@@ -7,13 +7,13 @@
 ### 팩토리 => 공장(class or function)
 - 오브젝트를 찍어 낼수 있는 공장
 
-피자, 치킨
-- (그림추가)
-food(상위 클래스) -> chikine, pizza
-![img_1.png](img_1.png)
-
+- <img width="600" alt="image" src="팩토리패턴3.jpeg">
 client는 그냥 공장에 "피자를 만들어줘", "치킨을 만들어줘"만 알려주면 공장에서 해당 음식의 생성과정을 통해서 음식을 전달해준다.
 - 즉, 생성과정을 알 필요가 없다는 이야기랑 같다.
+
+  ![img_1.png](img_1.png)
+
+food(상위 클래스) -> chikine, pizza
 
 
 ### 팩토리 패턴 구현하기
@@ -75,7 +75,7 @@ public static void main(String[] args) {
 - 자르기
 - 포장하기
 ```
-(4가지 절차가 있는 그림 넣기)
+- <img width="600" alt="image" src="팩토리패턴2.jpeg">
 
 - 클라이언트는 지금과 다른것 없이 피자를 주문할수 있을것 이다.
 
@@ -93,7 +93,9 @@ public static void main(String[] args) {
 
 - 이러한 문제를 팩토리 메서드 패턴에서 해결할수 있다.
   - 팩토리 패턴의 생성 메서드를 Interface로 만들고, 각각 객체에 맞는 factory를 생성한다. (피자, 치킨)
-- (그림 추가, 피자 치킨에 대한 각각 생성)
+- <img width="600" alt="image" src="팩토리메서드패턴.jpeg">
+
+
 ![img_2.png](img_2.png)
 - 객체에 따라 따로 팩토리를 만들었음으로, 객체에따라 기능구현이 가능해진다.
   (`피자를 몇조각으로 짜르는지, 치킨은 순살이 가능한지 여부`)
@@ -188,6 +190,9 @@ public static void main(String[] args) {
 ![img.png](img.png)
 
 ### 전체구조
+- <img width="600" alt="image" src="팩토리메서드패턴3.jpeg">
+
+----
 ![img_4.png](img_4.png)
 
 팩토리 메서드 패턴의 핵심은, factory interface가 있고, 각 객체마다 해당 interface의 object creater를 구현하고 있다는것이 핵심이다.
@@ -208,7 +213,9 @@ public static void main(String[] args) {
 - 팩토리 메서드 패턴은 필요한 객체 한개를 구현하는것이지 이 객체와 연관된 다른 객체들을 생성하는 구조가 아니였다.
 
 - 추상 팩토리 메서드를 활용하여 이 문제를 해결할수 있다.
-![img_5.png](img_5.png)
+- <img width="600" alt="image" src="팩토리메서드패턴추상.jpeg">
+---
+- ![img_5.png](img_5.png)
 - 구조는 이와 같다.
 
 `FoodServiceMenuAbstractFactory`
