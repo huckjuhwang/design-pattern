@@ -1,6 +1,5 @@
 ## 데코레이터 패턴
 객체에 동적으로 새로운 기능을 추가하거나 변경 할 수 있는 방법을 제공합니다.
-
 이 패턴은 상속을 사용하지 않고 객체의 구조를 수정하지 않으면서 기능을 확장
 하려는 경우 유용합니다. OCP를 준수합니다.
 
@@ -16,7 +15,6 @@
 
 손님이 원하는 기호에 맞게 다양한 옵션으로 주문 할 수 있습니다.
 ex) 모카와 휘핑크림을 추가한 다크 로스트 커피
-
 따라서 옵션이 추가 될수록 Beverage를 상속받는 클래스를 어마어마하게 만들어야 합니다. 이렇게 되면 관리가 매우 힘들것입니다.
 
 
@@ -26,7 +24,6 @@ ex) 모카와 휘핑크림을 추가한 다크 로스트 커피
 **문제점**
 
 클래스를 엄청 줄일 수 있지만 서브 클래스를 만드는 방식은 컴파일시 행동이 결정되기떄문에 서브클래스가 사용하지 않는 행동도 상속받게 될것입니다.
-
 클라이언트가 주문한 옵션에 엉뚱한 옵션이 넣어져 주문될 수 도 있습니다.
 또한 OCP 원칙도 어긋나게 됩니다.
 
@@ -139,11 +136,17 @@ public class coffeeOrderSystem {
 	public static void main(String args[]) {
 
 		Beverage beverage = new Espresso();
+
+		Beverage beverage2 = new Espresso();
+
 		beverage = new Mocha(beverage); // Mocha로 감싼다
 		beverage = new Mocha(beverage); // Mocha로 감싼다
 		beverage = new Whip(beverage); // Whip으로 감싼다
 
 		System.out.println(beverage.getDescription() + " $" + beverage.cost());
+		// 에스프레소 커피 $1.99
+		System.out.println(beverage2.getDescription() + " $" + beverage2.cost());
+		// 에스프레소 커피, 모카, 모카, 휘핑크림 $2.49
 	}
 }
 ```
@@ -152,6 +155,9 @@ public class coffeeOrderSystem {
 
 ### Q1.
 Beverage 클래스 장식하기 참고 (126페이지)
+
 만약 고객이 개인 텀블러나 머그컵을 가져왔을때 가격을 할인하고 안가져왔을때 가격을 추가하는 기능도 개발하려고 한다. 구조를 어떤 식으로 구성할 수 있을까?
+
+
 
 
