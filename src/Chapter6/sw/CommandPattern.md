@@ -32,7 +32,7 @@ ConcreateCommand 객체를 생성하고 Reciever 객체를 설정합니다.
 또한 Invoker에게 명령을 실행하도록 요청합니다.
 
 ### 커맨드 패턴의 구조
-<img width="800" height="300" alt="image" src="image/c1.png">
+<img width="800" height="600" alt="image" src="image/c1.png">
 
 ### 3. 간단한 커맨드 패턴 구현
 
