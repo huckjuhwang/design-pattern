@@ -8,26 +8,31 @@
 
 ### 2. 커맨드 패턴의 주요 구성요소
 * Command
+
 실행될 모든 명령에 대한 인터페이스 입니다.
 이 인터페이스는 excute 메서드를 정의하여 명령을 실행하는데 필요한 작업을 선언합니다.
 
 * ConcreteCommand
+
 Command 인터페이스를 구현하고 리시버 객체에 대한 특정 요청과 연결 합니다.
 excute 메소드를 오버라이드하여 수신자에게 특정 작업을 수행합니다.
 
 * Receiver
+
 실제로 작업을 수행하는 객체이고 ConcreateCommand는 이 Receiver에 대한 요청을 처리합니다.
 
 * Invoker
+
 Command 객체를 보관하며 명령을 실행할 메서드를 호출합니다.
 -> Command 객체의 excute 메서드를 호출하여 명령을 수행
 
 * Client
+
 ConcreateCommand 객체를 생성하고 Reciever 객체를 설정합니다.
 또한 Invoker에게 명령을 실행하도록 요청합니다.
 
 ### 커맨드 패턴의 구조
-<img width="800" alt="image" src="image/c1.png">
+<img width="800" height="300" alt="image" src="image/c1.png">
 
 ### 3. 간단한 커맨드 패턴 구현
 
