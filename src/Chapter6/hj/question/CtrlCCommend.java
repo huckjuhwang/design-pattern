@@ -1,7 +1,6 @@
 package Chapter6.hj.question;
 
 public class CtrlCCommend implements Commend {
-
     private TextViewer textViewer;
 
     public CtrlCCommend(TextViewer textViewer) {

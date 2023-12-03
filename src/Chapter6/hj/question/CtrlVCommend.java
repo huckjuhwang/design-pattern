@@ -2,7 +2,6 @@ package Chapter6.hj.question;
 
 
 public class CtrlVCommend implements Commend {
-
     private TextViewer textViewer;
 
     public CtrlVCommend(TextViewer textViewer) {

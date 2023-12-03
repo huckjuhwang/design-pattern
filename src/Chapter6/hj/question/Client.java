@@ -7,7 +7,6 @@ package Chapter6.hj.question;
 public class Client {
 
     public static void main(String[] args) {
-
         Keyboard keyboard = new Keyboard();  // invoker 셋팅
 
         TextViewer textViewer = new TextViewer();

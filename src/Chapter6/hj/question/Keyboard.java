@@ -2,7 +2,6 @@ package Chapter6.hj.question;
 
 
 public class Keyboard {
-
     public void setCommend(Macro KeyboardMacro, Commend commend) {
         KeyboardMacro.commend = commend;
     }
@@ -12,7 +11,6 @@ public class Keyboard {
     }
 
     public enum Macro {
-
         CONTROL_C(new NoneCommend(),"복사 하기"),
         CONTROL_V(new NoneCommend(), "붙여 넣기"),
         CONTROL_X(new NoneCommend(), "잘라 넣기");
@@ -23,7 +21,6 @@ public class Keyboard {
         }
 
         private String description;
-        Commend commend;
-
+        private Commend commend;
     }
 }
