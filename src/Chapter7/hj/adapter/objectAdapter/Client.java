@@ -8,12 +8,11 @@ import java.util.List;
  * 우리 회사에서는 A 회사에서 개발한 Sort엔진 솔루션을 구매해서 우리 회사의 Sort머신에 탑재하여 사용하고 있어왔고 한다.
  */
 public class Client {
-
     public static void main(String[] args) {
-        SortEngine sortEngineA = new SortAEngine();
+        SortEngine engine = new SortAEngine();
 
-        sortEngineA.sort();
-        sortEngineA.reverseSort();
-        sortEngineA.toPrettyPrint();
+        engine.sort();
+        engine.reverseSort();
+        engine.toPrettyPrint();
     }
 }

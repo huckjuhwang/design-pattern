@@ -1,4 +1,4 @@
-package Chapter7.hj.adapter.objectAdapter.TOBE;
+package Chapter7.hj.adapter.classAdapter.TOBE;
 
 
 import Chapter7.hj.adapter.objectAdapter.SortAEngine;
@@ -21,9 +21,9 @@ import Chapter7.hj.adapter.objectAdapter.SortEngine;
  * 사용자들도 기존에 제공되던 인터페이스가 아닌 다른인터페이스가 제공된다면 헷갈리지 않을까?
  *
  */
-public abstract class Client implements SortEngine {
+public class Client {
     public static void main(String[] args) {
-        SortEngine engine = new SortEngineAdapter(new SortAEngine(), new SortBEngine());
+        SortEngine engine = new SortEngineAdapter(new SortAEngine());
 
         engine.sort();
         engine.reverseSort();
