@@ -7,16 +7,20 @@
 
 ### 2. 반복자 패턴의 주요 구성요소
 * Iterator(반복자)
+
 컬랙션의 요소에 접근하고 순회를 위한 인터페이스를 정의합니다.
 일반적으로 next(), hasnext(), remove()와 같은 메소드를 제공합니다.
 
 * Concrete Iterator(구체적 반복자)
+
 Iterator 인터페이스를 구현하고 컬렉션의 특정 구현에 대한 순회 로적을 포함합니다.
 
 * Aggregate(집합체)
+
 반복자 객체를 생성할 수 있는 인터페이스를 정의합니다.
 
 * Concrete Aggregate(구체적 집합체)
+
 Aggregate 인터페이스를 구현하고, 특정 컬렉션에 대한 Iterator를 생성합니다.
 
 ### 반복자 패턴의 구조
