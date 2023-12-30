@@ -15,7 +15,8 @@ Target 인터페이스를 구현하고 내부적으로 Adaptee 메서드를 호�
 * Adaptee
 Adapter가 사용하는 기존 인터페이스를 정의합니다.
 ### 어댑터 패턴의 구조
-<img width="800" height="600" alt="image" src="image/a1.png">
+
+<img width="800" height="900" alt="image" src="image/a1.png">
 
 
 
