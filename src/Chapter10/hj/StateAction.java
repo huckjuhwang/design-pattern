@@ -1,14 +1,12 @@
 package Chapter10.hj;
 
 interface StateAction {
-    public boolean accept(State state);
-
     // 코인을 넣는다
-    public void insertQuarter(GumballMachine gm);
+    public void insertQuarter(GumballMachineContext gm);
     // 코인을 반환한다.
-    public void ejectQuarter(GumballMachine gm);
+    public void ejectQuarter(GumballMachineContext gm);
     // 손잡이를 돌린다.
-    public boolean turnCrank(GumballMachine gm);
+    public boolean turnCrank(GumballMachineContext gm);
     // 뽑기 상품 전달
-    public void dispense(GumballMachine gm);
+    public void dispense(GumballMachineContext gm);
 }

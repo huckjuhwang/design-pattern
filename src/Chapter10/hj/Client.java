@@ -3,7 +3,7 @@ package Chapter10.hj;
 public class Client {
 
     public static void main(String[] args) {
-        GumballMachine gm = new GumballMachine(3);
+        GumballMachineContext gm = new GumballMachineContext(3);
         System.out.println(gm);
 
         gm.insertQuarter();
@@ -17,6 +17,5 @@ public class Client {
         gm.turnCrank();
 
         System.out.println(gm);
-
     }
 }

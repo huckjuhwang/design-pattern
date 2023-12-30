@@ -2,28 +2,23 @@ package Chapter10.hj;
 
 public class SoldState implements StateAction {
     @Override
-    public boolean accept(State state) {
-        return State.SOLD == state;
-    }
-
-    @Override
-    public void insertQuarter(GumballMachine gm) {
+    public void insertQuarter(GumballMachineContext gm) {
         System.out.println("알맹이를 내보내고 있습니다.");
     }
 
     @Override
-    public void ejectQuarter(GumballMachine gm) {
+    public void ejectQuarter(GumballMachineContext gm) {
         System.out.println("이미 알맹이를 뽑으셨습니다.");
     }
 
     @Override
-    public boolean turnCrank(GumballMachine gm) {
+    public boolean turnCrank(GumballMachineContext gm) {
         System.out.println("손잡이는 한번만 돌려주세요");
         return false;
     }
 
     @Override
-    public void dispense(GumballMachine gm) {
+    public void dispense(GumballMachineContext gm) {
         gm.releaseBall();
 
         if(gm.count > 0) {
