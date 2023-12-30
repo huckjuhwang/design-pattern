@@ -3,14 +3,14 @@
 ----
 
 `상태 패턴(State Pattern)`을 사용하면 객체의 내부상태가 바뀜에 따라서 객체의 행동을 바꿀수 있다.
-마치 객체의 클래스가 바뀌는것 과 같은 결과을 얻을수 있는 것이다. 
+마치 객체의 클래스가 바뀌는것 과 같은 결과을 얻을수 있는 것이다.
 
 
 ```java
 여기서 '상태' 란, 객체가 가질 수 있는 어떤 조건이나 상황을 의미한다.
 예를들어 자판기에서 레버를 돌리면 음료수가 나오게된다.
 하지만 동전이 들어가 있지 않은 상태라면 레버를 돌린다고 하더라도 음료수가 나오지 않는다
-즉, 자판기의 상태에 따라 메소드 행동이 바뀌는 것이다.
+  즉, 자판기의 상태에 따라 메소드 행동이 바뀌는 것이다.
 
 이처럼 객체가 특정 상태에 따라 행위를 달리하는 상황에서 사용되는 최적의 패턴이 state pattern 이라고 보면 된다.
 ```
@@ -19,7 +19,8 @@
 ### 상태 패턴 구조
 
 ---
-![img.png](img.png)
+![](https://velog.velcdn.com/images/huckjuhwang/post/aa6bfbdd-f23b-44cc-a783-1476b17f6d1b/image.png)
+
 - `Context` : State에 따른 적절한 ConcreteState를 선택해주고, 호출 직후 State가 변하는 경우에 처리를 해준다.
 - `State`: 각 State에 따른 행위들을 인터페이스를 정의한다.
 - `ConcreteState`: 구체적인 각각의 상태를 클래스로 표현. State 역할로 결정되는 인터페이스(API)를 구체적으로 구현한다. 다음 상태가 결정되면 Context에 상태 변경을 요청하는 역할도 한다.
@@ -30,9 +31,9 @@
 ### 전략 패턴 vs 상태 패턴
 
 ---
-전략 패턴은 클라이언트가 맞는 전략을 선택한 후에 Context에 전달을 해줬다면, 
+전략 패턴은 클라이언트가 맞는 전략을 선택한 후에 Context에 전달을 해줬다면,
 - `상태 패턴`에서는 Context 객체에서 상태들이 캡슐화가 됩니다. Context 내부에서 상태들이 관리되다보니, 클라이언트는 해당 상태들을 알 필요가 없습니다.
-- 하지만 `전략 패턴`에서는 클라이언트가 Context 객체로 어떤 전략을 선택할지 결정해줍니다. 
+- 하지만 `전략 패턴`에서는 클라이언트가 Context 객체로 어떤 전략을 선택할지 결정해줍니다.
 
 **정리**
 
@@ -41,9 +42,10 @@
 - `상태 패턴` =>  한 번 인스턴스를 생성하고 난 뒤, 상태를 바꾸는 경우가 빈번한 경우에 사용한다.
 
 
-### 상태 패턴 구현해보기 
+### 상태 패턴 구현해보기
 - 상태(행위)를 객체화 해야한다
-![img_2.png](img_2.png)
+  ![](https://velog.velcdn.com/images/huckjuhwang/post/2bea5c16-65cb-43b7-8b88-c25b746c8d64/image.png)
+
 - 여기서의 행위는 총 4가지가 존재한다.
 ```text
 NoQuarterState -> 동전이 없는 상태
@@ -52,7 +54,8 @@ SoldState -> 상품 판매중 상태
 SoldOutState -> 품절 상태
 ```
 
-![img_3.png](img_3.png)
+![](https://velog.velcdn.com/images/huckjuhwang/post/9d916c6a-ee71-4b14-89d9-3d695588f459/image.png)
+
 - 상태 State에 따른 구현체는 enum클래스 타입에 싱글톤 형태로 작성되어 있다.
 
 
@@ -223,7 +226,8 @@ public class Client {
 ```
 
 ### 결과
-![img_4.png](img_4.png)
+![](https://velog.velcdn.com/images/huckjuhwang/post/80608058-6fa0-4fff-8130-74aaa03fcd47/image.png)
+
 
 
 ### 특징
