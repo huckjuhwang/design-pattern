@@ -40,10 +40,10 @@ public class Client {
      */
     public static void main(String[] args) {
         Factory factory = new Factory();
-        Food chicken = factory.createFood("CHICKEN");
+        Food chicken = factory.createFood(FoodEnum.CHICKEN);
         chicken.eat();
 
-        Food pizza = factory.createFood("PIZZA");
+        Food pizza = factory.createFood(FoodEnum.PIZZA);
         pizza.eat();
     }
 }

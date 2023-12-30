@@ -7,7 +7,7 @@
 - 기존코드를 클라이언트가 사용하는 인터페이스의 구현체로 바꿔주는 패턴
 
 
-구성요소
+**구성요소**
 - 클라이언트는 항상 Target 인터페이스만 사용하는 형태
 - Adaptee에 해당하는 클래스(ex. 한국에서 미국으로 들고온 한국 냉장고)
 - Target과 Adaptee 사이를 이어주는 Adapter
@@ -83,6 +83,9 @@ class B_SortEngine {
 
 
 ---
+### 어댑터 패턴을 활용한 개선
+
+
 ```java
 public class SortEngineAdapter implements SortEngine {
     SortAEngine engineA;
@@ -108,6 +111,27 @@ public class SortEngineAdapter implements SortEngine {
         engineA.toPrettyPrint();
     }
 }
-
-
 ```
+
+```java
+public class Client {
+    public static void main(String[] args) {
+        SortEngine engine = new SortEngineAdapter(new SortAEngine(), new SortBEngine());
+
+        engine.sort();
+        engine.reverseSort();
+        engine.toPrettyPrint();
+    }
+}
+```
+- 결과
+
+![img_2.png](img_2.png)
+
+
+- 클라이언트는 기존에 사용하던 기능들을 모두 그대로 제공받을수 있다.
+- 엔진도 효율적인 엔진에 맞춰서 적용을 했음으로 성능도 향상된다.
+
+따라서, 우리회사의 sort엔진에서 이용하던 인터페이스는 손대지 않고, 새로운 어댑터를 상황에 맞춰서 사용할수 있게 되었다. 
+
+![img_3.png](img_3.png)
